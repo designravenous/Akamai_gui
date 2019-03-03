@@ -1,0 +1,9 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Akamai{% endblock %}
+{% block content %}
+            <form>
+            {{ form.start_date.label }}
+            {{ form.start_date }}
+                {{ form.submit() }}
+        </form>
+            {% endblock %}
