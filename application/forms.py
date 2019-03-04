@@ -4,5 +4,7 @@ from wtforms.validators import DataRequired
 from wtforms.fields.html5 import DateField
 
 class TrafficForm(FlaskForm):
-    start_date = DateField('Start date:', format='%Y-%m-%d') 
+    domain_name = StringField('Domain', validators=[DataRequired()])
+    start_date = DateField('Start date:', format='%Y-%m-%d',validators=[DataRequired()]) 
+    end_date = DateField('End date:', format='%Y-%m-%d', validators=[DataRequired()])
     submit = SubmitField('Go!', render_kw={'class':'btn btn-primary'})

@@ -1,9 +1,36 @@
 {% extends "bootstrap/base.html" %}
 {% block title %}Akamai{% endblock %}
 {% block content %}
-            <form>
+<div class="container">
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel panel-heading">Akamai Hits</div>
+            <div class="panel panel-body">
+        <form method="POST" action="">
+                {{ form.hidden_tag() }}
+            {{ form.domain_name.label }}
+            {{ form.domain_name(size=20) }}
             {{ form.start_date.label }}
             {{ form.start_date }}
+            {{ form.end_date.label }}
+            {{ form.end_date }}
+
                 {{ form.submit() }}
-        </form>
-            {% endblock %}
+          
+        </form>   
+    </div>
+    {% if message != '' %}
+    {% if message == "Error! Start date is greater than End date" %}
+    <div class="panel-body bg-danger text-center">
+        {{ message }}
+    </div>
+    {% else %}
+    <div class="panel-body">
+            {{ message }}
+    </div>
+    {% endif %}
+    {% endif %}
+    </div>
+    </div>
+    </div>
+{% endblock %}
