@@ -7,16 +7,15 @@
             <div class="panel panel-heading">Akamai Hits</div>
             <div class="panel panel-body">
         <form method="POST" action="">
-                {{ form[0].hidden_tag() }}
-            {{ form[0].domain_name.label }}
-            {{ form[0].domain_name(size=20) }}
-            {{ form[0].start_date.label }}
-            {{ form[0].start_date }}
-            {{ form[0].end_date.label }}
-            {{ form[0].end_date }}
+                {{ form.csrf_token }}
+            {{ form.domain_name.label }}
+            {{ form.domain_name(size=20) }}
+            {{ form.start_date.label }}
+            {{ form.start_date }}
+            {{ form.end_date.label }}
+            {{ form.end_date }}
 
-                {{ form[0].submit() }}
-          
+                {{ form.submit() }}
         </form>   
     </div>
     {% if message != '' %}
@@ -34,11 +33,9 @@
     </div>
     <div class="panel panel-primary">
         <div class="panel panel-heading">Akamai Zone</div>
-        <div class="panel-body">
-
-
-        </div>
-    
+        <div class="panel panel-body">
+       <h6>Hello</h6>
+    </div>
     </div>
     </div>
     </div>
