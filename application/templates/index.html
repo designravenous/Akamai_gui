@@ -21,15 +21,30 @@
     </div>
     {% if message != '' %}
     {% if message == "Error! Start date is greater than End date" %}
-    <div class="panel-body bg-danger text-center">
+    <div class="panel-body panel-danger text-center">
         {{ message }}
     </div>
     {% else %}
-    <div class="panel-body">
-            {{ message }}
+    <div class="panel-body text-center panel-success">
+            <p class="text-center">{{ message }}</p>
     </div>
     {% endif %}
     {% endif %}
+
+    </div>
+    <div class="panel panel-primary">
+        <div class="panel panel-heading">Akamai Zone</div>
+        <div class="panel-body">
+            <form method="POST" action="">
+                {{ form.hidden_tag() }}
+            {{ form.domain_name.label }}
+            {{ form.domain_name(size=20) }}
+                {{ form.submit() }}
+          
+        </form> 
+
+        </div>
+    
     </div>
     </div>
     </div>

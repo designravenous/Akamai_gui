@@ -7,4 +7,8 @@ class TrafficForm(FlaskForm):
     domain_name = StringField('Domain', validators=[DataRequired()])
     start_date = DateField('Start date:', format='%Y-%m-%d',validators=[DataRequired()]) 
     end_date = DateField('End date:', format='%Y-%m-%d', validators=[DataRequired()])
-    submit = SubmitField('Go!', render_kw={'class':'btn btn-primary'})
+    submit = SubmitField('Get Hits', render_kw={'class':'btn btn-primary'})
+
+class ZoneForm(FlaskForm):
+    domain_name = StringField('Domain', validators=[DataRequired()])
+    submit = SubmitField('Get Zone',render_kw={'class':'btn btn-primary'})
