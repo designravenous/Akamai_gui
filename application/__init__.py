@@ -21,8 +21,8 @@ def index():
     credentials = cred.Akamai_report()
     zone_credentials = cred.Akamai_zone_read()
     #credentials = Akamai_credentials(something).Akamai_report
-    form = TrafficForm()
-    form1 = ZoneForm()
+    form = TrafficForm(prefix="form")
+    form1 = ZoneForm(prefix="form1")
     message = ''
     message2 = '' 
     hits_info = []

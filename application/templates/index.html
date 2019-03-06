@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel panel-heading">Akamai Hits</div>
+            <div class="panel panel-heading"><h5>Akamai Hits</h5></div>
             <div class="panel panel-body">
         <form method="POST" action="">
                 {{ form.csrf_token }}
@@ -24,7 +24,7 @@
         {{ message }}
     </div>
     {% else %}
-    <div class="panel-body text-center panel-success">
+    <div class="panel-body text-center panel-default">
             <p><b>Domain: </b>{{ hits_info[0].upper() }}</p><br>
             <p><b>DNS Hits: </b>{{ hits_info[1] }}</p><br>
             <p><b>NX Count: </b>{{ hits_info[2] }}</p><br>
@@ -33,8 +33,8 @@
     {% endif %}
 
     </div>
-    <div class="panel panel-primary">
-        <div class="panel panel-heading">Akamai Zone</div>
+    <div class="panel panel-default">
+        <div class="panel panel-heading"><h5>Akamai Zone</h5></div>
         <div class="panel panel-body">
             <form method="POST" action="">
                     {{ form1.csrf_token }}
