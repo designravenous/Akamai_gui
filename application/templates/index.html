@@ -34,8 +34,18 @@
     <div class="panel panel-primary">
         <div class="panel panel-heading">Akamai Zone</div>
         <div class="panel panel-body">
-            <h6>hello</h6>
+            <form method="POST" action="">
+                    {{ form1.csrf_token }}
+            {{ form1.domain_name.label }}
+            {{ form1.domain_name(size=15) }}
+                {{ form1.submit() }}
+        </form> 
     </div>
+    {% if message2 != '' %}
+    <div class="panel-body panel-danger text-center">
+        {{ message2 }}
+    </div>
+    {% endif %}
     </div>
     </div>
     </div>

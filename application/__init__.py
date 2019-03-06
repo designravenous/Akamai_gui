@@ -20,8 +20,10 @@ def index():
     credentials = cred.Akamai_report()
     #credentials = Akamai_credentials(something).Akamai_report
     form = TrafficForm()
+    form1 = ZoneForm()
     message = ''
-    if form.validate_on_submit():
+    message2 = '' 
+    if form.validate_on_submit() and form.submit.data:
         if form.start_date.data > form.end_date.data:
             message = "Error! Start date is greater than End date"
         else:
@@ -49,7 +51,9 @@ def index():
                 message = "Domain: %s DNS Hits: %d NX Hits:%d Timestamp: %s -> %s" % (form.domain_name.data.upper(),count_dns,nx_count, form.start_date.data,form.end_date.data)
             except:
                 message = "ERROR occured"
-    return render_template('index.html', form=form, message=message)
+    if form1.validate_on_submit() and form1.submit.data:
+        message2 = form1.domain_name.data
+    return render_template('index.html', form=form, message=message, message2=message2, form1=form1)
 
 
     
