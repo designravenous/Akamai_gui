@@ -1,7 +1,7 @@
 from flask import Flask, json
 from application.config import Akamai_credentials
 from urllib.parse import urljoin
-from flask import render_template
+from flask import render_template, url_for
 from application.forms import TrafficForm, ZoneForm
 from flask_bootstrap import Bootstrap
 import requests

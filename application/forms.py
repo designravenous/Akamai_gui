@@ -12,3 +12,7 @@ class TrafficForm(FlaskForm):
 class ZoneForm(FlaskForm):
     domain_name = StringField('Domain', validators=[DataRequired()])
     submit = SubmitField('Get Zone',render_kw={'class':'btn btn-primary'})
+
+class ResolutionForm(FlaskForm):
+    domain_name = StringField('Domain', validators=[DataRequired()])
+    submit = SubmitField('Search', render_kw={'class':'btn btn-primary'})

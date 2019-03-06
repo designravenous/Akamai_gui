@@ -3,17 +3,17 @@
 {% block app_content %}
 <div class="container">
     <div class="row">
-        <div class="panel panel-default">
+        <div class="panel panel-success">
             <div class="panel panel-heading"><h5>Akamai Hits</h5></div>
             <div class="panel panel-body">
         <form method="POST" action="">
                 {{ form.csrf_token }}
-            {{ form.domain_name.label }}
-            {{ form.domain_name(size=15) }}
-            {{ form.start_date.label }}
-            {{ form.start_date }}
-            {{ form.end_date.label }}
-            {{ form.end_date }}
+            {{ form.domain_name.label }}&nbsp;
+            {{ form.domain_name(size=15) }}&nbsp;
+            {{ form.start_date.label }}&nbsp;
+            {{ form.start_date }}&nbsp;
+            {{ form.end_date.label }}&nbsp;
+            {{ form.end_date }}&nbsp;&nbsp;
 
                 {{ form.submit() }}
         </form>   
@@ -33,13 +33,13 @@
     {% endif %}
 
     </div>
-    <div class="panel panel-default">
+    <div class="panel panel-success">
         <div class="panel panel-heading"><h5>Akamai Zone</h5></div>
         <div class="panel panel-body">
             <form method="POST" action="">
                     {{ form1.csrf_token }}
-            {{ form1.domain_name.label }}
-            {{ form1.domain_name(size=15) }}
+            {{ form1.domain_name.label }}&nbsp;
+            {{ form1.domain_name(size=15) }}&nbsp;&nbsp;
                 {{ form1.submit() }}
         </form> 
     </div>
