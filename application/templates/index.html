@@ -1,6 +1,6 @@
-{% extends "bootstrap/base.html" %}
+{% extends "base.html" %}
 {% block title %}Akamai{% endblock %}
-{% block content %}
+{% block app_content %}
 <div class="container">
     <div class="row">
         <div class="panel panel-default">
@@ -20,14 +20,14 @@
     </div>
     {% if message != '' %}
     {% if message == "Error! Start date is greater than End date" %}
-    <div class="panel-body panel-danger text-center">
-        {{ message }}
+    <div class="panel-body panel-danger text-center bg-danger ">
+        <b>{{ message }}</b>
     </div>
     {% else %}
-    <div class="panel-body text-center panel-default">
-            <p><b>Domain: </b>{{ hits_info[0].upper() }}</p><br>
-            <p><b>DNS Hits: </b>{{ hits_info[1] }}</p><br>
-            <p><b>NX Count: </b>{{ hits_info[2] }}</p><br>
+    <div class="panel-body text-center panel-default bg-success ">
+            <p><b>Domain: </b>{{ hits_info[0].upper() }}</p>
+            <p><b>DNS Hits: </b>{{ hits_info[1] }}</p>
+            <p><b>NX Count: </b>{{ hits_info[2] }}</p>
     </div>
     {% endif %}
     {% endif %}
@@ -44,7 +44,7 @@
         </form> 
     </div>
     {% if message2 != '' %}
-    <div class="panel-body panel-danger text-center">
+    <div class="panel-body panel-danger bg-success text-center">
             <p><b>Domain: </b>{{ zone_outcome[0].upper() }}</p><br>
             <p><b>NS: </b></p>
             {% for item in zone_outcome[1] %}

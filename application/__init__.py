@@ -70,7 +70,7 @@ def index():
         except:
             message2 = 'error'
 
-    return render_template('index.html', form=form, message=message, message2=message2, form1=form1, hits_info=hits_info, zone_outcome=zone_outcome)
+    return render_template('index.html', form=form, message=message, message2=message2, form1=form1, hits_info=hits_info, zone_outcome=zone_outcome, title="DNS")
 
 
     
