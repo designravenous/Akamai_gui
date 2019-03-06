@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, json
 from application.config import Akamai_credentials
 from urllib.parse import urljoin
 from flask import render_template
@@ -13,16 +13,20 @@ csrf = CSRFProtect(app)
 Bootstrap(app)
 app.config['SECRET_KEY'] = "Dont_say_a_word"
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     something = " "
     cred = Akamai_credentials(something)
     credentials = cred.Akamai_report()
+    zone_credentials = cred.Akamai_zone_read()
     #credentials = Akamai_credentials(something).Akamai_report
     form = TrafficForm()
     form1 = ZoneForm()
     message = ''
     message2 = '' 
+    hits_info = []
+    zone_outcome = []
     if form.validate_on_submit() and form.submit.data:
         if form.start_date.data > form.end_date.data:
             message = "Error! Start date is greater than End date"
@@ -49,11 +53,24 @@ def index():
                 for hit in outcome[1::3]:
                     nx_count += int(hit)
                 message = "Domain: %s DNS Hits: %d NX Hits:%d Timestamp: %s -> %s" % (form.domain_name.data.upper(),count_dns,nx_count, form.start_date.data,form.end_date.data)
+                hits_info = [form.domain_name.data, count_dns, nx_count, form.start_date.data, form.end_date.data]
+                message = 'Success'
             except:
                 message = "ERROR occured"
     if form1.validate_on_submit() and form1.submit.data:
         message2 = form1.domain_name.data
-    return render_template('index.html', form=form, message=message, message2=message2, form1=form1)
+        domain = str(form1.domain_name.data)
+        try:
+            result = zone_credentials[0].get(urljoin(zone_credentials[1],'/config-dns/v1/zones/' + domain))
+            stringar = result.text
+            document = json.loads(stringar)
+            zone_outcome.append(document['zone']['name'])
+            zone_outcome.append(document['zone']['ns'])
+            #zone_outcome.extend()
+        except:
+            message2 = 'error'
+
+    return render_template('index.html', form=form, message=message, message2=message2, form1=form1, hits_info=hits_info, zone_outcome=zone_outcome)
 
 
     

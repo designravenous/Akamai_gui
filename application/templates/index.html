@@ -25,7 +25,9 @@
     </div>
     {% else %}
     <div class="panel-body text-center panel-success">
-            <p class="text-center">{{ message }}</p>
+            <p><b>Domain: </b>{{ hits_info[0].upper() }}</p><br>
+            <p><b>DNS Hits: </b>{{ hits_info[1] }}</p><br>
+            <p><b>NX Count: </b>{{ hits_info[2] }}</p><br>
     </div>
     {% endif %}
     {% endif %}
@@ -43,7 +45,11 @@
     </div>
     {% if message2 != '' %}
     <div class="panel-body panel-danger text-center">
-        {{ message2 }}
+            <p><b>Domain: </b>{{ zone_outcome[0].upper() }}</p><br>
+            <p><b>NS: </b></p>
+            {% for item in zone_outcome[1] %}
+            <p>{{ item['target'] }}</p>
+            {% endfor %}
     </div>
     {% endif %}
     </div>
