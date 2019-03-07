@@ -5,7 +5,7 @@
     <div class="row">
         <div class="panel panel-success">
             <div class="panel panel-heading"><h5>Akamai Hits</h5></div>
-            <div class="panel panel-body">
+            <div class="panel panel-body justify-content-center align-items-center">
         <form method="POST" action="">
                 {{ form.csrf_token }}
             {{ form.domain_name.label }}&nbsp;
@@ -48,6 +48,11 @@
         </form> 
     </div>
     {% if message2 != '' %}
+        {% if message2 == "Zone Not Found" %}
+        <div class="panel-body panel-danger bg-danger text-center">
+            {{ message2 }}
+        </div>
+        {% else %}
     <div class="panel-body panel-danger bg-success text-center">
             <p><b>Domain: </b>{{ zone_outcome[0].upper() }}</p><br>
             <p><b>NS: </b></p>
@@ -55,6 +60,7 @@
             <p>{{ item['target'] }}</p>
             {% endfor %}
     </div>
+    {% endif %}
     {% endif %}
     </div>
     </div>

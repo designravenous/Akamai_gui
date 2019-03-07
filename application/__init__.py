@@ -65,10 +65,13 @@ def index():
         try:
             result = zone_credentials[0].get(urljoin(zone_credentials[1],'/config-dns/v1/zones/' + domain))
             stringar = result.text
-            document = json.loads(stringar)
-            zone_outcome.append(document['zone']['name'])
-            zone_outcome.append(document['zone']['ns'])
-            #zone_outcome.extend()
+            if stringar.__contains__("Not Found"):
+                message2 = "Zone Not Found"
+            else:
+                document = json.loads(stringar)
+                zone_outcome.append(document['zone']['name'])
+                zone_outcome.append(document['zone']['ns'])
+                #zone_outcome.extend()
         except:
             message2 = 'error'
 
