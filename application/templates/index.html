@@ -23,6 +23,10 @@
     <div class="panel-body panel-danger text-center bg-danger ">
         <b>{{ message }}</b>
     </div>
+    {% elif message == "Zone Does Not Exist" %}
+    <div class="panel-body panel-danger text-center bg-danger ">
+            <b>{{ message }}</b>
+    </div>
     {% else %}
     <div class="panel-body text-center panel-default bg-success ">
             <p><b>Domain: </b>{{ hits_info[0].upper() }}</p>
