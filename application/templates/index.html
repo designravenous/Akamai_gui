@@ -101,7 +101,14 @@
     </div>
     <div class="panel panel-success">
         <div class="panel panel-heading"><h5>Domain Resolution</h5></div>
-        <div class="panel panel-body justify-content-center align-items-center"></div>
+        <div class="panel panel-body justify-content-center align-items-center">
+            <form method="POST" action="">
+                {{ form2.csrf_token }}
+                {{ form2.domain_name.label }}&nbsp;
+                {{ form2.domain_name(size=15) }}&nbsp;&nbsp;
+                {{ form2.submit() }}
+            </form>
+        </div>
     </div>
     </div>
     </div>

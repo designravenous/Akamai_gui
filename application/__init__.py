@@ -23,10 +23,13 @@ def index():
     #credentials = Akamai_credentials(something).Akamai_report
     form = TrafficForm(prefix="form")
     form1 = ZoneForm(prefix="form1")
+    form2 = ResolutionForm(prefix="form2")
     message = ''
     message2 = '' 
+    message3 = ''
     hits_info = []
     zone_outcome = []
+    resolution_outcome = [] 
     if form.validate_on_submit() and form.submit.data:
         if form.start_date.data > form.end_date.data:
             message = "Error! Start date is greater than End date"
@@ -44,7 +47,7 @@ def index():
                 else:
                     computer_list = []
                     computer_list.append(some_text)
-                    computer_list = [w.replace('\n', ',') for w in computer_list] #List Comprehensions
+                    computer_list = [w.replace('\n', ',') for w in computer_list] #List Comprehension
                     outcome = computer_list[0].split(',')
                     for i in range(5):
                         outcome.pop(0)
@@ -79,7 +82,7 @@ def index():
         except:
             message2 = 'error'
 
-    return render_template('index.html', form=form, message=message, message2=message2, form1=form1, hits_info=hits_info, zone_outcome=zone_outcome, title="DNS")
+    return render_template('index.html', form=form, message=message, message2=message2, message3=message3, form1=form1, hits_info=hits_info, zone_outcome=zone_outcome, resolution_outcome=resolution_outcome, title="DNS", form2=form2)
 
 
     
