@@ -59,6 +59,26 @@
             {% for item in zone_outcome[1] %}
             <p>{{ item['target'] }}</p>
             {% endfor %}
+            <br><p><b>SOA:</b></p>
+            <p>Contact: {{ zone_outcome[2]['contact'] }}</p>
+            <p>Expire: {{ zone_outcome[2]['expire'] }}</p>
+            <p>Minimum: {{ zone_outcome[2]['minimum'] }}</p>
+            <p>OriginServer: {{ zone_outcome[2]['originserver'] }}</p>
+            <p>Refresh: {{ zone_outcome[2]['refresh'] }}</p>
+            <p>Retry: {{ zone_outcome[2]['retry'] }}</p>
+            <p>TTL: {{ zone_outcome[2]['ttl'] }}</p>
+            {% if zone_outcome[3] %}
+            <br>
+            <p><b>MX:</b></p>
+            {% for item in zone_outcome[3] %}
+            <p><b>Active:</b> {{ item['active'] }}</p>
+            <p><b>Name: </b>{{ item['name'] }}</p>
+            <p><b>Priority: </b>{{ item['priority'] }}</p>
+            <p><b>Target:</b> {{ item['target'] }}</p>
+            <p><b>TTL:</b> {{ item['ttl'] }}</p>
+            {% endfor %}
+            {% endif %}
+
     </div>
     {% endif %}
     {% endif %}

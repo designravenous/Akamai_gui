@@ -2,7 +2,7 @@ from flask import Flask, json
 from application.config import Akamai_credentials
 from urllib.parse import urljoin
 from flask import render_template, url_for
-from application.forms import TrafficForm, ZoneForm
+from application.forms import TrafficForm, ZoneForm, ResolutionForm
 from flask_bootstrap import Bootstrap
 import requests
 import datetime
@@ -69,8 +69,11 @@ def index():
                 message2 = "Zone Not Found"
             else:
                 document = json.loads(stringar)
+                print(document)
                 zone_outcome.append(document['zone']['name'])
                 zone_outcome.append(document['zone']['ns'])
+                zone_outcome.append(document['zone']['soa'])
+                zone_outcome.append(document['zone']['mx'])
                 #zone_outcome.extend()
         except:
             message2 = 'error'
