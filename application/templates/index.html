@@ -1,10 +1,9 @@
 {% extends "base.html" %}
-{% block title %}Akamai{% endblock %}
 {% block app_content %}
 <div class="container">
     <div class="row">
         <div class="panel panel-success">
-            <div class="panel panel-heading"><h5>Akamai Hits</h5></div>
+            <div class="panel panel-heading"><h5>Domain Hits</h5></div>
             <div class="panel panel-body justify-content-center align-items-center">
         <form method="POST" action="">
                 {{ form.csrf_token }}
@@ -38,7 +37,7 @@
 
     </div>
     <div class="panel panel-success">
-        <div class="panel panel-heading"><h5>Akamai Zone</h5></div>
+        <div class="panel panel-heading"><h5>Zone Records</h5></div>
         <div class="panel panel-body">
             <form method="POST" action="">
                     {{ form1.csrf_token }}
@@ -76,8 +75,8 @@
             <p><b>Priority: </b>{{ item['priority'] }}</p>
             <p><b>Target:</b> {{ item['target'] }}</p>
             <p><b>TTL:</b> {{ item['ttl'] }}</p>
-            <hr>
             {% endfor %}
+            <hr>
             {% else %}
             <p><b>No MX record found</b></p>
             {% endif %}
@@ -89,8 +88,8 @@
             <p><b>Name: </b>{{ item['name'] }}</p>
             <p><b>Target:</b> {{ item['target'] }}</p>
             <p><b>TTL:</b> {{ item['ttl'] }}</p>
-            <hr>
             {% endfor %}
+            <hr>
             {% else %}
             <p><b>No CNAMES records found</b></p>
             {% endif %}
