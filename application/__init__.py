@@ -74,6 +74,7 @@ def index():
                 zone_outcome.append(document['zone']['ns'])
                 zone_outcome.append(document['zone']['soa'])
                 zone_outcome.append(document['zone']['mx'])
+                zone_outcome.append(document['zone']['cname'])
                 #zone_outcome.extend()
         except:
             message2 = 'error'

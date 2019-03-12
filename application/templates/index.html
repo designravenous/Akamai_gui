@@ -76,8 +76,25 @@
             <p><b>Priority: </b>{{ item['priority'] }}</p>
             <p><b>Target:</b> {{ item['target'] }}</p>
             <p><b>TTL:</b> {{ item['ttl'] }}</p>
+            <hr>
             {% endfor %}
+            {% else %}
+            <p><b>No MX record found</b></p>
             {% endif %}
+            {% if zone_outcome[4] %}
+            <br>
+            <p><b>CNAMES:</b></p>
+            {% for item in zone_outcome[4] %}
+            <p><b>Active:</b> {{ item['active'] }}</p>
+            <p><b>Name: </b>{{ item['name'] }}</p>
+            <p><b>Target:</b> {{ item['target'] }}</p>
+            <p><b>TTL:</b> {{ item['ttl'] }}</p>
+            <hr>
+            {% endfor %}
+            {% else %}
+            <p><b>No CNAMES records found</b></p>
+            {% endif %}
+
 
     </div>
     {% endif %}
