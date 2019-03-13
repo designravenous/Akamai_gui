@@ -104,7 +104,7 @@ def index():
         except:
             pass
 
-    return render_template('index.html', form=form, message=message, message2=message2, message3=message3, form1=form1, hits_info=hits_info, resolution_outcome_bare=resolution_outcome_bare, resolution_outcome_www=resolution_outcome_www, title="DNS", form2=form2)
+    return render_template('index.html', form=form, message=message, message2=message2, message3=message3, form1=form1, hits_info=hits_info, resolution_outcome_bare=resolution_outcome_bare, resolution_outcome_www=resolution_outcome_www, zone_outcome=zone_outcome, title="DNS", form2=form2)
 
 
     
