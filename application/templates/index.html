@@ -75,6 +75,7 @@
             <p><b>Priority: </b>{{ item['priority'] }}</p>
             <p><b>Target:</b> {{ item['target'] }}</p>
             <p><b>TTL:</b> {{ item['ttl'] }}</p>
+            <br>
             {% endfor %}
             <hr>
             {% else %}
@@ -88,6 +89,7 @@
             <p><b>Name: </b>{{ item['name'] }}</p>
             <p><b>Target:</b> {{ item['target'] }}</p>
             <p><b>TTL:</b> {{ item['ttl'] }}</p>
+            <br>
             {% endfor %}
             <hr>
             {% else %}
@@ -110,18 +112,28 @@
             </form>
         </div>
         {% if message3 != '' %}
-        {% if message3 == 'Error' %}
+        {% if not resolution_outcome_bare %}
         <div class="panel-body panel-danger bg-danger text-center">
-            <b><p>{{ message3 }}! Result was None</p></b>
+            <b><p>BareNaked missing</p></b>
         </div>
         {% else %}
         <div class="panel-body panel-danger bg-success text-center">
-            <p>Domain: <b>{{ resolution_outcome[0] }}</b></p>
-            <p>Response Code (barenaked): <b>{{ resolution_outcome[1] }}</b></p>
-            <p>Resolution (barenaked): <b>{{ resolution_outcome[2] }}</b></p>
+            <p>Domain: <b>{{ resolution_outcome_bare[0] }}</b></p>
+            <p>Response Code (barenaked): <b>{{ resolution_outcome_bare[1] }}</b></p>
+            <p>Resolution (barenaked): <b>{{ resolution_outcome_bare[2] }}</b></p>
             <hr>
-            <p>Status (www): <b>{{ resolution_outcome[3] }}</b></p>
-            <p>Response Code (www): <b>{{ resolution_outcome[4] }}</b></p>
+        </div>
+        {% endif %}
+        {% if not resolution_outcome_www %}
+        <div class="panel-body panel-danger bg-danger text-center">
+            <b><p>WWW missing</p></b>
+        </div>
+        {% else %}
+        <div class="panel-body panel-danger bg-success text-center">
+            <p>Domain: <b>{{ resolution_outcome_www[0] }}</b></p>
+            <p>Response Code (WWW): <b>{{ resolution_outcome_www[1] }}</b></p>
+            <p>Resolution (WWW): <b>{{ resolution_outcome_www[2] }}</b></p>
+            <hr>
         </div>
         {% endif %}
         {% endif %}

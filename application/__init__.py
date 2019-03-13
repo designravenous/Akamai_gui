@@ -30,7 +30,8 @@ def index():
     message3 = ''
     hits_info = []
     zone_outcome = []
-    resolution_outcome = [] 
+    resolution_outcome_www = [] 
+    resolution_outcome_bare = []
     if form.validate_on_submit() and form.submit.data:
         if form.start_date.data > form.end_date.data:
             message = "Error! Start date is greater than End date"
@@ -90,18 +91,20 @@ def index():
         try:
             response_bare_naked = requests.get(domain_bare_naked)
             match_bare_naked = re.search('<title>(.*?)</title>', response_bare_naked.text)
-            response_domain = requests.get(www_domain)
             status_bare_naked = response_bare_naked.status_code
-            resolution_bare_naked = response_bare_naked.url
+            resolution_bare_naked = response_bare_naked.url 
+            resolution_outcome_bare.extend([domain, status_bare_naked, resolution_bare_naked])
+        except:
+            pass
+        try:
+            response_domain = requests.get(www_domain)
             status_www = response_domain.status_code
             resolution_www = response_domain.url
-            resolution_outcome.extend([domain, status_bare_naked, resolution_bare_naked, status_www, resolution_www])
+            resolution_outcome_www.extend([domain, status_www, resolution_www])
         except:
-            message3 = "Error"
+            pass
 
-
-
-    return render_template('index.html', form=form, message=message, message2=message2, message3=message3, form1=form1, hits_info=hits_info, zone_outcome=zone_outcome, resolution_outcome=resolution_outcome, title="DNS", form2=form2)
+    return render_template('index.html', form=form, message=message, message2=message2, message3=message3, form1=form1, hits_info=hits_info, resolution_outcome_bare=resolution_outcome_bare, resolution_outcome_www=resolution_outcome_www, title="DNS", form2=form2)
 
 
     
