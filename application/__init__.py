@@ -7,6 +7,7 @@ from flask_bootstrap import Bootstrap
 import requests
 import datetime
 from flask_wtf.csrf import CSRFProtect
+import re
 
 app = Flask(__name__)
 csrf = CSRFProtect(app)
@@ -88,9 +89,8 @@ def index():
         www_domain = "http://www." + domain
         try:
             response_bare_naked = requests.get(domain_bare_naked)
-            print(response_bare_naked.status_code)
+            match_bare_naked = re.search('<title>(.*?)</title>', response_bare_naked.text)
             response_domain = requests.get(www_domain)
-            print(response_bare_naked.status_code)
             status_bare_naked = response_bare_naked.status_code
             resolution_bare_naked = response_bare_naked.url
             status_www = response_domain.status_code
