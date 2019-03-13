@@ -81,6 +81,25 @@ def index():
                 #zone_outcome.extend()
         except:
             message2 = 'error'
+    if form2.validate_on_submit() and form2.submit.data:
+        message3 = form2.domain_name.data
+        domain = str(message3)
+        domain_bare_naked = "http://" + domain
+        www_domain = "http://www." + domain
+        try:
+            response_bare_naked = requests.get(domain_bare_naked)
+            print(response_bare_naked.status_code)
+            response_domain = requests.get(www_domain)
+            print(response_bare_naked.status_code)
+            status_bare_naked = response_bare_naked.status_code
+            resolution_bare_naked = response_bare_naked.url
+            status_www = response_domain.status_code
+            resolution_www = response_domain.url
+            resolution_outcome.extend([domain, status_bare_naked, resolution_bare_naked, status_www, resolution_www])
+        except:
+            message3 = "Error"
+
+
 
     return render_template('index.html', form=form, message=message, message2=message2, message3=message3, form1=form1, hits_info=hits_info, zone_outcome=zone_outcome, resolution_outcome=resolution_outcome, title="DNS", form2=form2)
 
